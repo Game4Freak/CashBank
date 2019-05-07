@@ -23,7 +23,7 @@ namespace Game4Freak.CashBank
     public class CashBank : RocketPlugin<CashBankConfiguration>
     {
         public static CashBank Instance;
-        public const string VERSION = "0.1.0.0";
+        public const string VERSION = "0.2.0.0";
         public const string cashBankFlag = "cashBank";
         public const string notifyBalanceFlag = "notifyBalance";
 
