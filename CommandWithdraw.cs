@@ -97,16 +97,14 @@ namespace Game4Freak.CashBank
                     return;
                 }
                 decimal maxNote = 0;
-                bool isValid = false;
                 foreach (var banknote in CashBank.Instance.Configuration.Instance.bankNotes)
                 {
                     if (command[1].ToLower() == banknote.name.ToLower())
                     {
                         maxNote = banknote.worth;
-                        isValid = true;
                     }
                 }
-                if (!isValid)
+                if (maxNote == 0)
                 {
                     if (!decimal.TryParse(command[1], out maxNote))
                     {
@@ -119,12 +117,11 @@ namespace Game4Freak.CashBank
                 {
                     if (maxNote == notes[x].worth)
                     {
-                        notes.RemoveRange(0, x);
                         UnturnedChat.Say(caller, CashBank.Instance.Translate("withdraw", "$", amount, fr34kyn01535.Uconomy.Uconomy.Instance.Configuration.Instance.MoneyName), UnturnedChat.GetColorFromName(CashBank.Instance.Configuration.Instance.messageColor, Color.green));
                         fr34kyn01535.Uconomy.Uconomy.Instance.Database.IncreaseBalance(player.CSteamID.ToString(), -amount);
                         while (amount > 0)
                         {
-                            for (int i = 0; i < notes.Count; i++)
+                            for (int i = x; i < notes.Count; i++)
                             {
                                 if (amount >= notes[i].worth)
                                 {

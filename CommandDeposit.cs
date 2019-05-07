@@ -100,20 +100,18 @@ namespace Game4Freak.CashBank
                 }
             }
             decimal note = 0;
-            bool isValid = false;
             foreach (var banknote in CashBank.Instance.Configuration.Instance.bankNotes)
             {
                 if (command[0].ToLower() == banknote.name.ToLower())
                 {
                     note = banknote.worth;
-                    isValid = true;
                 }
             }
-            if (!isValid)
+            if (note == 0)
             {
                 if (!decimal.TryParse(command[0], out note))
                 {
-                    UnturnedChat.Say(caller, CashBank.Instance.Translate("note_invalid", command[1]), UnturnedChat.GetColorFromName(CashBank.Instance.Configuration.Instance.messageColor, Color.green));
+                    UnturnedChat.Say(caller, CashBank.Instance.Translate("note_invalid", command[0]), UnturnedChat.GetColorFromName(CashBank.Instance.Configuration.Instance.messageColor, Color.green));
                     return;
                 }
             }
@@ -123,6 +121,7 @@ namespace Game4Freak.CashBank
                 UnturnedChat.Say(caller, CashBank.Instance.Translate("amount_invalid", command[1]), UnturnedChat.GetColorFromName(CashBank.Instance.Configuration.Instance.messageColor, Color.green));
                 return;
             }
+            UnturnedChat.Say(caller, amountNotes.ToString());
             foreach (var banknote in CashBank.Instance.Configuration.Instance.bankNotes)
             {
                 if (note == banknote.worth)
@@ -143,10 +142,13 @@ namespace Game4Freak.CashBank
                                     if (index == 255) continue;
                                     if (i.getItem(index).item.id == banknote.ID)
                                     {
-                                        amount += banknote.worth;
-                                        i.removeItem(index);
-                                        if (amountNotes != 0 && amount == banknote.worth * amount)
-                                            fin = true;
+                                        if (!fin)
+                                        {
+                                            amount += banknote.worth;
+                                            i.removeItem(index);
+                                            if (amountNotes != 0 && amount == banknote.worth * amountNotes)
+                                                fin = true;
+                                        }
                                     }
                                 }
                                 catch { }
