@@ -94,7 +94,7 @@ namespace Game4Freak.CashBank
                 }
                 else
                 {
-                    UnturnedChat.Say(caller, CashBank.Instance.Translate("deposit", "$", amount, fr34kyn01535.Uconomy.Uconomy.Instance.Configuration.Instance.MoneyName), UnturnedChat.GetColorFromName(CashBank.Instance.Configuration.Instance.messageColor, Color.green));
+                    UnturnedChat.Say(caller, CashBank.Instance.Translate("deposit", fr34kyn01535.Uconomy.Uconomy.Instance.Configuration.Instance.MoneySymbol, amount, fr34kyn01535.Uconomy.Uconomy.Instance.Configuration.Instance.MoneyName), UnturnedChat.GetColorFromName(CashBank.Instance.Configuration.Instance.messageColor, Color.green));
                     fr34kyn01535.Uconomy.Uconomy.Instance.Database.IncreaseBalance(player.CSteamID.ToString(), amount);
                     return;
                 }
@@ -162,7 +162,7 @@ namespace Game4Freak.CashBank
                     }
                     else
                     {
-                        UnturnedChat.Say(caller, CashBank.Instance.Translate("deposit", "$", amount, fr34kyn01535.Uconomy.Uconomy.Instance.Configuration.Instance.MoneyName), UnturnedChat.GetColorFromName(CashBank.Instance.Configuration.Instance.messageColor, Color.green));
+                        UnturnedChat.Say(caller, CashBank.Instance.Translate("deposit", fr34kyn01535.Uconomy.Uconomy.Instance.Configuration.Instance.MoneySymbol, amount, fr34kyn01535.Uconomy.Uconomy.Instance.Configuration.Instance.MoneyName), UnturnedChat.GetColorFromName(CashBank.Instance.Configuration.Instance.messageColor, Color.green));
                         fr34kyn01535.Uconomy.Uconomy.Instance.Database.IncreaseBalance(player.CSteamID.ToString(), amount);
                         return;
                     }

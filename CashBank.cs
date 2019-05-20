@@ -23,11 +23,9 @@ namespace Game4Freak.CashBank
     public class CashBank : RocketPlugin<CashBankConfiguration>
     {
         public static CashBank Instance;
-        public const string VERSION = "0.2.0.0";
+        public const string VERSION = "0.2.1.0";
         public const string cashBankFlag = "cashBank";
         public const string notifyBalanceFlag = "notifyBalance";
-
-        // $ mit fr34kyn01535.Uconomy.Uconomy.Instance.Configuration.Instance.MoneySymbol austauschen
 
         protected override void Load()
         {
@@ -70,14 +68,14 @@ namespace Game4Freak.CashBank
         private void onZoneEntered(UnturnedPlayer player, Zone zone, Vector3 lastPos)
         {
             if (zone.hasFlag(notifyBalanceFlag))
-                UnturnedChat.Say(player, Translate("balance_notification", "$", fr34kyn01535.Uconomy.Uconomy.Instance.Database.GetBalance(player.CSteamID.ToString()), fr34kyn01535.Uconomy.Uconomy.Instance.Configuration.Instance.MoneyName), UnturnedChat.GetColorFromName(CashBank.Instance.Configuration.Instance.messageColor, Color.green));
+                UnturnedChat.Say(player, Translate("balance_notification", fr34kyn01535.Uconomy.Uconomy.Instance.Configuration.Instance.MoneySymbol, fr34kyn01535.Uconomy.Uconomy.Instance.Database.GetBalance(player.CSteamID.ToString()), fr34kyn01535.Uconomy.Uconomy.Instance.Configuration.Instance.MoneyName), UnturnedChat.GetColorFromName(CashBank.Instance.Configuration.Instance.messageColor, Color.green));
         }
 
         private void onPayed(UnturnedPlayer sender, string receiver, decimal amt)
         {
             if (Configuration.Instance.usePayTaxation)
             {
-                UnturnedChat.Say(sender, Translate("taxation_notification", "$", amt * Configuration.Instance.payTaxes , fr34kyn01535.Uconomy.Uconomy.Instance.Configuration.Instance.MoneyName, Configuration.Instance.payTaxes * 100), UnturnedChat.GetColorFromName(CashBank.Instance.Configuration.Instance.messageColor, Color.green));
+                UnturnedChat.Say(sender, Translate("taxation_notification", fr34kyn01535.Uconomy.Uconomy.Instance.Configuration.Instance.MoneySymbol, amt * Configuration.Instance.payTaxes , fr34kyn01535.Uconomy.Uconomy.Instance.Configuration.Instance.MoneyName, Configuration.Instance.payTaxes * 100), UnturnedChat.GetColorFromName(CashBank.Instance.Configuration.Instance.messageColor, Color.green));
                 fr34kyn01535.Uconomy.Uconomy.Instance.Database.IncreaseBalance(sender.CSteamID.ToString(), -(amt * Configuration.Instance.payTaxes));
             }
         }

@@ -73,7 +73,7 @@ namespace Game4Freak.CashBank
             }
             if (command.Length == 1)
             {
-                UnturnedChat.Say(caller, CashBank.Instance.Translate("withdraw", "$", amount, fr34kyn01535.Uconomy.Uconomy.Instance.Configuration.Instance.MoneyName), UnturnedChat.GetColorFromName(CashBank.Instance.Configuration.Instance.messageColor, Color.green));
+                UnturnedChat.Say(caller, CashBank.Instance.Translate("withdraw", fr34kyn01535.Uconomy.Uconomy.Instance.Configuration.Instance.MoneySymbol, amount, fr34kyn01535.Uconomy.Uconomy.Instance.Configuration.Instance.MoneyName), UnturnedChat.GetColorFromName(CashBank.Instance.Configuration.Instance.messageColor, Color.green));
                 fr34kyn01535.Uconomy.Uconomy.Instance.Database.IncreaseBalance(player.CSteamID.ToString(), -amount);
                 List<Note> notes = CashBank.Instance.Configuration.Instance.bankNotes;
                 while (amount > 0)
@@ -117,7 +117,7 @@ namespace Game4Freak.CashBank
                 {
                     if (maxNote == notes[x].worth)
                     {
-                        UnturnedChat.Say(caller, CashBank.Instance.Translate("withdraw", "$", amount, fr34kyn01535.Uconomy.Uconomy.Instance.Configuration.Instance.MoneyName), UnturnedChat.GetColorFromName(CashBank.Instance.Configuration.Instance.messageColor, Color.green));
+                        UnturnedChat.Say(caller, CashBank.Instance.Translate("withdraw", fr34kyn01535.Uconomy.Uconomy.Instance.Configuration.Instance.MoneySymbol, amount, fr34kyn01535.Uconomy.Uconomy.Instance.Configuration.Instance.MoneyName), UnturnedChat.GetColorFromName(CashBank.Instance.Configuration.Instance.messageColor, Color.green));
                         fr34kyn01535.Uconomy.Uconomy.Instance.Database.IncreaseBalance(player.CSteamID.ToString(), -amount);
                         while (amount > 0)
                         {

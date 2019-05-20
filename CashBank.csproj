@@ -34,9 +34,9 @@
     <LangVersion>6</LangVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AdvancedZones">
-      <HintPath>lib\AdvancedZones.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="AdvancedZones, Version=0.7.3.2, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\AdvancedZones\bin\Release\AdvancedZones.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
