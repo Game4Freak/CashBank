@@ -55,7 +55,7 @@ namespace Game4Freak.CashBank
                 UnturnedChat.Say(caller, CashBank.Instance.Translate("command_invalid", Name, Syntax), UnturnedChat.GetColorFromName(CashBank.Instance.Configuration.Instance.messageColor, Color.green));
                 return;
             }
-            if (CashBank.Instance.Configuration.Instance.useAdvancedZones && !AdvancedZones.AdvancedZones.Instance.playerInZoneType(player, CashBank.cashBankFlag))
+            if (CashBank.Instance.Configuration.Instance.useAdvancedZones && !inZone(player, CashBank.cashBankFlag))
             {
                 UnturnedChat.Say(caller, CashBank.Instance.Translate("zone_invalid"), UnturnedChat.GetColorFromName(CashBank.Instance.Configuration.Instance.messageColor, Color.green));
                 return;
@@ -170,6 +170,11 @@ namespace Game4Freak.CashBank
             }
             UnturnedChat.Say(caller, CashBank.Instance.Translate("note_invalid", command[1]), UnturnedChat.GetColorFromName(CashBank.Instance.Configuration.Instance.messageColor, Color.green));
             return;
+        }
+
+        private bool inZone(UnturnedPlayer player, string zoneID)
+        {
+            return AdvancedZones.AdvancedZones.Instance.playerInZoneType(player, zoneID);
         }
     }
 }
