@@ -121,7 +121,6 @@ namespace Game4Freak.CashBank
                 UnturnedChat.Say(caller, CashBank.Instance.Translate("amount_invalid", command[1]), UnturnedChat.GetColorFromName(CashBank.Instance.Configuration.Instance.messageColor, Color.green));
                 return;
             }
-            UnturnedChat.Say(caller, amountNotes.ToString());
             foreach (var banknote in CashBank.Instance.Configuration.Instance.bankNotes)
             {
                 if (note == banknote.worth)
