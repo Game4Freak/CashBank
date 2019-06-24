@@ -23,7 +23,7 @@ namespace Game4Freak.CashBank
     public class CashBank : RocketPlugin<CashBankConfiguration>
     {
         public static CashBank Instance;
-        public const string VERSION = "0.2.2.1";
+        public const string VERSION = "0.2.2.2";
         public const string cashBankFlag = "cashBank";
         public const string notifyBalanceFlag = "notifyBalance";
 
@@ -45,12 +45,12 @@ namespace Game4Freak.CashBank
             Logger.Log("Using AdvancedZones");
             AdvancedZones.AdvancedZones.Instance.addCustomFlag("cashBank", 100, "Deposit or withdraw your money in the zone");
             AdvancedZones.AdvancedZones.Instance.addCustomFlag("notifyBalance", 101, "Notifies you about your balance when entering zone with cashBank flag");
-            AdvancedZones.AdvancedZones.onZoneEnter += onZoneEntered;
+            AdvancedZones.AdvancedZones.Instance.onZoneEnter += onZoneEntered;
         }
 
         private void unregister()
         {
-            AdvancedZones.AdvancedZones.onZoneEnter -= onZoneEntered;
+            AdvancedZones.AdvancedZones.Instance.onZoneEnter -= onZoneEntered;
         }
 
         protected override void Unload()
