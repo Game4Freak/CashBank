@@ -45,12 +45,12 @@ namespace Game4Freak.CashBank
             Logger.Log("Using AdvancedZones");
             AdvancedZones.AdvancedZones.Instance.addCustomFlag("cashBank", 100, "Deposit or withdraw your money in the zone");
             AdvancedZones.AdvancedZones.Instance.addCustomFlag("notifyBalance", 101, "Notifies you about your balance when entering zone with cashBank flag");
-            AdvancedZones.AdvancedZones.Instance.onZoneEnter += onZoneEntered;
+            AdvancedZones.AdvancedZones.onZoneEnter += onZoneEntered;
         }
 
         private void unregister()
         {
-            AdvancedZones.AdvancedZones.Instance.onZoneEnter -= onZoneEntered;
+            AdvancedZones.AdvancedZones.onZoneEnter -= onZoneEntered;
         }
 
         protected override void Unload()
